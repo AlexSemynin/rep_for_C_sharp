@@ -23,6 +23,43 @@ namespace ifWhileForList
                     Console.WriteLine("Упс");
                 }
             }
+
+            {
+                //switch
+                Console.WriteLine("Нажмите Y или X");
+                string letter = Console.ReadLine();
+                switch (letter)
+                {
+                    case "Y":
+                        Console.WriteLine("Вы нажали Y");
+                        break;
+                    case "X":
+                        Console.WriteLine("Вы нажали X");
+                        break;
+                    default:
+                        Console.WriteLine("Неизвестно");
+                        break;
+                }
+
+                //Оператор goto case вместо break;
+                int number = 1;
+                switch (number)
+                {
+                    case 1:
+                        goto case 5;
+                    case 2:
+                        Console.WriteLine("2");
+                        break;
+                    case 5:
+                        Console.WriteLine("Переход выполнени успешно");
+                        break;
+                    default:
+                        Console.WriteLine("default");
+                        break;
+                }
+
+            }
+
             Console.ReadKey();
         }
     }
