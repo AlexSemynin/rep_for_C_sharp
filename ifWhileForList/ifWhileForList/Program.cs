@@ -60,6 +60,16 @@ namespace ifWhileForList
 
             }
 
+            {
+                //Тенарная операция
+                int x = 3;
+                int y = 2;
+                Console.WriteLine("Нажмите + или -");
+                string selection = Console.ReadLine();
+                int z = selection == "+" ? (x + y) : (x - y);
+                Console.WriteLine(z);
+            }
+
             Console.ReadKey();
         }
     }
