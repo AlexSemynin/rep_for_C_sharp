@@ -21,10 +21,16 @@ namespace Mass
             {
                 Console.WriteLine($"{i}");
             }
+
             for(int i = 0; i < num1.Length; i++)
             {
                 Console.WriteLine($"{num1[i]}");
             }
+
+
+            // Многомерные массивы
+            int[,] numsM = { { 1, 2, 3, }, { 4, 5, 6, } };
+            Console.WriteLine(numsM);
             Console.ReadKey();
         }
     }
