@@ -32,8 +32,51 @@ namespace SortMass
             //        Console.Write(BigMass1[i, j]);
             //    }
             //}
-            
+
             //ЗАДАЧИ С МАССИВАМИ
+
+            // 1 Найдем количество положительных чисел в массиве:
+            int[] NameOfMass = { 3, 2, -1, 4, -3, -1, 5, 5 };
+            int kolElements = 0;
+            foreach(int number in NameOfMass)
+            {
+                if(number < 0)
+                {
+                    kolElements++;
+                }
+            }
+            Console.WriteLine($"Колличество отрицательных элементов в массиве = {kolElements}");
+
+            // 2 Сортировка массива
+            Console.WriteLine("Введите количество элементов массива");
+            int lengthOfMass = Convert.ToInt32(Console.ReadLine());
+            int[] myMass = new int[lengthOfMass];
+            for(int i = 0; i < lengthOfMass; i++)
+            {
+                Console.Write($"Введите {i}-й эллемент массива: \t");
+                myMass[i] = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            int temp;
+            for (int i = 0; i < myMass.Length - 1; i++)
+            {
+                for (int j = i + 1; j < myMass.Length; j++)
+                {
+                    if (myMass[i] > myMass[j])
+                    {
+                        temp = myMass[i];
+                        myMass[i] = myMass[j];
+                        myMass[j] = temp;
+                    }
+                }
+            }
+
+            for (int i = 0; i < myMass.Length; i++)
+            {
+                Console.WriteLine(myMass[i]);
+            }
+
             Console.ReadKey();
         }
     }
