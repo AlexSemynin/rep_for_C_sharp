@@ -16,6 +16,12 @@ namespace _2passingParametersReference
             Console.WriteLine($"переменная по значению {a}\n");
             IncrementREF(ref b);
             Console.WriteLine($"переменная по ccылке в Main {b}");
+            {
+                int area;
+                double perimetr;
+                Calculate(3, 4, out area, out perimetr);
+                Console.Write($"периметр: {perimetr} \n Площадь: {area}");
+            }
             Console.ReadKey();
         }
         static void Increment(int a)
@@ -28,5 +34,11 @@ namespace _2passingParametersReference
             a++;
             Console.WriteLine($"переменная по ссылке в методе {a}");
         }
+        static void Calculate(int x, int y, out int area, out double perimetr)
+        {
+            area = x * y;
+            perimetr = (x + y) / 2;
+        }
+        
     }
 }
