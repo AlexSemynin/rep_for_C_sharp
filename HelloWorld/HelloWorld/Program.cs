@@ -20,6 +20,8 @@ namespace HelloWorld /*объявление нового пространств�
             Console.WriteLine("this is your first programs on C#, and tribute to God Programming");
             Console.WriteLine("Hello, World!");
             Console.ReadKey();
+            int[,] NameMass = { { 1, 2, 3 }, { 4, 5, 6 } };
+            Console.WriteLine(NameMass[0,2]);
         }
     }
 }
