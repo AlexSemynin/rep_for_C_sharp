@@ -17,6 +17,7 @@ namespace _4_0_Class
             Console.ReadKey();
 
             Person noname = new Person();
+            noname.age = 23;
             noname.GetInfo();
 
             Person bob = new Person("Жора", 21);
