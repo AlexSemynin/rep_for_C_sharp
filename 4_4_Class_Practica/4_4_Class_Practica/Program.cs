@@ -12,7 +12,7 @@ namespace _4_4_Class_Practica
         {
             Warrior noname = new Warrior();
             Warrior petya = new Warrior("Petya", "Human", 2);
-            MagicWarrior ilya = new MagicWarrior("Ilya", 110);
+            MagicWarrior ilya = new MagicWarrior("Ilya", "Ork", 110);
             petya.HealhtDown();
             petya.Show();
             ilya.Show();
@@ -26,7 +26,7 @@ namespace _4_4_Class_Practica
         //Поля
         private int health = 100;
         private string name;
-        private string race;
+        protected string race;
         int lvl = 1;
         protected static int count = 0;
 
@@ -43,12 +43,9 @@ namespace _4_4_Class_Practica
             this.race = thisRace;
             count++;
         }
-        public Warrior(string thisName, string thisRace, int thisLVL)
-        {
-            this.name = thisName;
-            this.race = thisRace;
+        public Warrior(string thisName, string thisRace, int thisLVL) : this(thisName, thisRace)  // перегруженный конструктор, ccылается на конструктор с 2-мя входными параметами
+        {                                                                                         //конструктор текущий(this)
             this.lvl = thisLVL;
-            count++;
         }
         //Методы
         public void Show()
@@ -77,14 +74,13 @@ namespace _4_4_Class_Practica
     {
         private int magic = 100;
         //Конструктор дочернего класса
-        public MagicWarrior(string thisName1, int thisMagic)
+        public MagicWarrior(string thisName1, string thisRace, int thisMagic) : base(thisName1, thisRace)
         {
-            Name = thisName1;
             this.magic = thisMagic;
         }
         public void Show()
         {
-            Console.Write($"Hero is {Name};\n Magic is {magic}");
+            Console.Write($"Hero is {Name};\n Race is {race} Magic is {magic}\n");
         }
     }
 }
