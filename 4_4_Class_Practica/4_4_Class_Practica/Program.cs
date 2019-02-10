@@ -21,7 +21,7 @@ namespace _4_4_Class_Practica
             Console.ReadKey();
         }
     }
-    class Warrior
+    public class Warrior
     {
         //Поля
         private int health = 100;
@@ -65,22 +65,55 @@ namespace _4_4_Class_Practica
         public string Name
         {
             get { return name; }
-            set{ name = value; }
+           /// set{ name = value; }
         } 
         //Автоматическое свойство ???
         public int Race { get; set; }
+
+        public void Rage()
+        {
+            Console.WriteLine("RARARA");
+            name = "RARA";
+        }
+
+        public int HP { get; set; }
     }
     class MagicWarrior : Warrior
     {
         private int magic = 100;
+        private Warrior _warrior;
+
         //Конструктор дочернего класса
         public MagicWarrior(string thisName1, string thisRace, int thisMagic) : base(thisName1, thisRace)
         {
             this.magic = thisMagic;
+            _warrior = new Warrior();
         }
+
+        public int GetHP()
+        {
+            return _warrior.HP + 100;
+        }
+
         public void Show()
         {
             Console.Write($"Hero is {Name};\n Race is {race} Magic is {magic}\n");
+        }
+
+        private int _i;
+
+        public int i2 { get { return _i; } private set { } }
+
+        public int T { get; set; }
+
+        public void Click()
+        {
+            _i++;
+        }
+
+        public int GetClickCount()
+        {
+            return i;
         }
     }
 }
