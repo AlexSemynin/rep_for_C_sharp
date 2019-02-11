@@ -11,9 +11,13 @@ namespace _6_1_Events
         static void Main(string[] args)
         {
             Account account = new Account(200);
+            // Добавляем обработчики события
+            account.Added += Messege;
+            account.Withdrawn += Messege;
 
-            account.Put(100);
-            account.Withdraw(200);
+            //вызываем методы
+            account.Put(50);
+            account.Withdraw(100);
             Console.ReadKey();
         }
         public static void Messege(string mess)
