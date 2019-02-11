@@ -11,8 +11,7 @@ namespace _6_1_Events
         static void Main(string[] args)
         {
             Account account = new Account(200);
-            //Регистрируем делегат - передаем ему на какой метод будет ссылаться
-            account.RegisterHendler(Messege);
+
             account.Put(100);
             account.Withdraw(200);
             Console.ReadKey();
@@ -22,10 +21,16 @@ namespace _6_1_Events
             Console.WriteLine(mess);
         }
     }
-    public delegate void MessegeHandler(string message);
+    //public delegate void MessegeHandler(string message);
     class Account
     {
-        MessegeHandler _del;
+        //Обхявляем делегат
+        public delegate void MessegeHandler(string message);
+        //События при выводе и добавлении денег
+        public event MessegeHandler Withdrawn;
+        public event MessegeHandler Added;
+
+
         int _sum;
 
         public Account(int sum)
@@ -36,17 +41,15 @@ namespace _6_1_Events
         public void Put(int sum)
         {
             _sum += sum;
-            _del($"Вам поступило на счет {sum}rub");
+            Added($"Вам поступило на счет {sum}rub");
         }
         public void Withdraw(int sum)
         {
             _sum -= sum;
-            _del($"Списание {sum}rub");
-            _del($"Остаток {_sum}rub");
-        }
-        public void RegisterHendler(MessegeHandler del)
-        {
-            _del += del;
+            Withdrawn($"Списание {sum}rub");
+            Withdrawn($"Остаток {_sum}rub");
         }
     }
 }
+
+//Собития мы можем объявлять и вызывать только из класса или структуры!
