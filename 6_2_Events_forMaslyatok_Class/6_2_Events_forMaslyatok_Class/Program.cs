@@ -11,15 +11,16 @@ namespace _6_2_Events_forMaslyatok_Class
         static void Main(string[] args)
         {
             Account account = new Account(200);
-            account.Summed += Display; //Закрепляем за событием обработчик
-            account.Withdrown += Display;
+
+
             account.Put(200);
             account.Withdrow(300);
             Console.ReadKey();
         }
-        public static void Display(string mess)
+        public static void Display(object sender, AccountEventArgs e)
         {
-            Console.WriteLine(mess);
+            Console.WriteLine($"Сумма транзакции: {e.Sum}");
+            Console.WriteLine(e.Message);
         }
         
     }
@@ -27,7 +28,7 @@ namespace _6_2_Events_forMaslyatok_Class
     class Account
     {
 
-        public delegate void MessageHandler(string str);
+        public delegate void MessageHandler(object sender, AccountEventArgs e);
         public event MessageHandler Summed;
         public event MessageHandler Withdrown;
         int _sum;
@@ -39,12 +40,12 @@ namespace _6_2_Events_forMaslyatok_Class
         public void Put(int sum)
         {
             _sum += sum;
-            Summed($"Пришло на счет {sum}");
+            Summed(this, new AccountEventArgs($"Пришло на счет{sum}", sum));
         }
         public void Withdrow(int sum)
         {
             _sum -= sum;
-            Withdrown($"Списано {sum}");
+            Withdrown(this, new AccountEventArgs($"Списано со счета{sum}", sum));
         }
     }
     class AccountEventArgs
