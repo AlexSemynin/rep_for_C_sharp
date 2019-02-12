@@ -11,8 +11,8 @@ namespace _6_2_Events_forMaslyatok_Class
         static void Main(string[] args)
         {
             Account account = new Account(200);
-
-
+            account.Summed += Display;
+            account.Withdrown += Display;
             account.Put(200);
             account.Withdrow(300);
             Console.ReadKey();
